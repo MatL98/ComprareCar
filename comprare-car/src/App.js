@@ -1,5 +1,7 @@
-import logo from './logo.svg';
+import Navbar from './Components/NavBar/NavBar';
+import ItemList from './Components/ItemList/ItemListContainer'
 import './App.css';
+
 
 function App() {
   return (
@@ -7,7 +9,7 @@ function App() {
     <>
     <div className="App">
     <Navbar nombreDeTienda="ComprareCar"/>
-    <h2>Hola mundo</h2> 
+    <ItemList saludo = "Bienvenido a nuestra tienda de autos" ></ItemList>
     </div>
     </>
     </div>

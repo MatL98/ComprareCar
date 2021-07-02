@@ -1,5 +1,7 @@
 import React from "react";
+import Cart from "../Cart/Cart";
 
+//Navegacion en conjunto con el carrito.
 const Navbar = (props) => {
     console.log(props);
     return(
@@ -10,7 +12,7 @@ const Navbar = (props) => {
                     <li>puntos de venta</li>
                     <li>nosotros</li>
                 </ul>
-                <button onClick={props.darBienvenida}>carrito</button>
+                <Cart/>
         </nav>
     );
 };
