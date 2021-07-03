@@ -4,10 +4,11 @@
   box-sizing: border-box;
 }
 
-nav{
+.navBar{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   background-color: rgb(99, 99, 99);
   color: rgb(255, 255, 255);
 }
@@ -21,6 +22,7 @@ ul{
   flex-direction: row;
   list-style: none;
   align-items: center;
+  justify-content: center;
 }
 li{
   padding: 0 10px;
@@ -28,7 +30,10 @@ li{
 }
 
 h1{
+  display: flex;
   font-size: 2rem;
+  padding-bottom: 5px;
+  
 }
 h2{
   font: 700;

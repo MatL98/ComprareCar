@@ -1,5 +1,8 @@
-import Navbar from './Components/NavBar/NavBar';
-import ItemList from './Components/ItemList/ItemListContainer'
+import Navbar from './components/NavBar/NavBar';
+import ItemList from './components/ItemList/ItemListContainer'
+import React, { useState } from 'react';
+
+
 import './App.css';
 
 
@@ -8,8 +11,9 @@ function App() {
     <div className="App">
     <>
     <div className="App">
-    <Navbar nombreDeTienda="ComprareCar"/>
-    <ItemList saludo = "Bienvenido a nuestra tienda de autos" ></ItemList>
+    <Navbar/>
+    <ItemList></ItemList>
+    {/* <ItemList saludo = "Bienvenido a nuestra tienda de autos" ></ItemList> */}
     </div>
     </>
     </div>

@@ -2,11 +2,11 @@ import React from "react";
 import Cart from "../Cart/Cart";
 
 //Navegacion en conjunto con el carrito.
-const Navbar = (props) => {
-    console.log(props);
+const Navbar = () => {
+    console.log();
     return(
-        <nav>
-            <h1>{props.nombreDeTienda}</h1>
+        <nav className="navBar">
+            <h1>ComprareCar</h1>
                 <ul>
                     <li>productos</li>
                     <li>puntos de venta</li>
