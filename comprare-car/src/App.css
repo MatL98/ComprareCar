@@ -41,3 +41,23 @@ h2{
   text-align: center;
   margin-top: 4rem;
 }
+
+.counter{
+  text-align: center;
+  margin-top: 5rem;
+}
+h3{
+  font-size: 50px;
+  text-align: center;
+}
+.plus , .minus{
+margin-left: 5rem;
+color: white;
+background-color: black;
+height: 30px;
+width: 50px;
+}
+
+.plus:hover , .minus:hover{
+  box-shadow: 0px 0px 10px rgb(1, 1, 141);
+}
