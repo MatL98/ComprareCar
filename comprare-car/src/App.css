@@ -43,12 +43,13 @@ h2{
 }
 
 .counter{
-  text-align: center;
   margin-top: 5rem;
+  text-align: center;
 }
 h3{
   font-size: 50px;
   text-align: center;
+  
 }
 .plus , .minus{
 margin-left: 5rem;
@@ -60,4 +61,16 @@ width: 50px;
 
 .plus:hover , .minus:hover{
   box-shadow: 0px 0px 10px rgb(1, 1, 141);
+}
+
+.item{
+  display: grid;
+}
+.divCars{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 5rem 0;
 }
