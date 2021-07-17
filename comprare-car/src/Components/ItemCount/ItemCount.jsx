@@ -7,8 +7,6 @@ const ItemCount = ({stock, initital}) => {
     const [count, setCount] = useState(0);
     console.log(stock);
 
-
-
     function addOn(){
         if(initital >= 1 && count < stock){
             setCount(count + 1);

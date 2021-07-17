@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { Item } from "./Item";
+import styled from 'styled-components';
 
+
+const cardStyle = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin: 5rem 0;
+`;
 
 
 
@@ -31,9 +41,10 @@ const ItemListContainer = () =>{
 
 
     return (
-        <div className = "divCars">
+        <cardStyle>
             {listItems.map(car => <Item {...car}></Item>)}
-        </div>
+        </cardStyle>
+        
     )
     
 }
