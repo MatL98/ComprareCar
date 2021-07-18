@@ -1,52 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Item } from "./Item";
-import styled from 'styled-components';
-
-
-const cardStyle = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    margin: 5rem 0;
-`;
+import { Link } from "react-router-dom";
 
 
 
-const ItemListContainer = () =>{
-    const cars = [{brand: "Audi", model: "RS3 Sportback", year: 2020, price: 60000, id: 1, i: "../../img/rs3.jpg"},
-                {brand: "Mercedes Benz", model: "C 63 AMG", year: 2021, price: 87000,id: 2, i: "../../img/rs3.jpg"},
-                {brand: "BMW", model: "M3", year: 2018, price: 65000,id: 3 , i: "../../img/rs3.jpg"},
-                {brand: "Ford", model: "Shelby GT350", year: 2017, price: 60000,id: 4, i: "../../img/rs3.jpg"}]
 
+
+
+const ItemListContainer = () => {
     const msToSeg = 1000;
+
+    const urlPoke = "https://pokeapi.co/api/v2/pokemon?limit=5&offset=00"
+
+
+    const [pokemon, setPokemon] = useState([])
     const [listItems, setListItems] = useState([])
 
 
+    const getPokemon = () => {
+        fetch(urlPoke)
+            .then(res => res.json())
+            .then(data => setPokemon(data.results))
+        console.log()
+    }
 
-    const getList = () => 
-    {
-        return(
+
+
+
+    useEffect(() => {
+        getPokemon();
+    }, [])
+
+    const getList = () => {
+        return (
             new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    resolve(cars)
+                    resolve(pokemon)
                 }, msToSeg * 2)
             })
-        )   
-        
+        )
     }
     getList()
-    .then((resolve) => setListItems(resolve))
+        .then((resolve) => setListItems(resolve))
 
 
+    const pokeurls = listItems.map(p => p.url)
+    console.log(pokeurls)
     return (
-        <cardStyle>
-            {listItems.map(car => <Item {...car}></Item>)}
-        </cardStyle>
+        
+            <div className="divCars">
+                {listItems.map(poke => <Link key={pokemon.key} to = {`pokemon/${pokemon.key}`}>
+                                        <Item namePoke={poke.name}></Item>
+                                        </Link>)}
+            </div>
+        
         
     )
-    
+
 }
 
 

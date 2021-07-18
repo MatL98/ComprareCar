@@ -1,10 +1,10 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-.navBar{
+.navBar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -12,65 +12,84 @@
   background-color: rgb(99, 99, 99);
   color: rgb(255, 255, 255);
 }
-.cartImg{
+
+.cartImg {
   height: 60px;
   width: 60px;
 }
 
-ul{
+ul {
   display: flex;
   flex-direction: row;
   list-style: none;
   align-items: center;
   justify-content: center;
 }
-li{
+
+li {
   padding: 0 10px;
   text-transform: uppercase;
 }
-/*
-h1{
+
+h1 {
   display: flex;
   font-size: 2rem;
   padding-bottom: 5px;
-  
+  color: black;
+
 }
-h2{
+
+h2 {
   font: 700;
   font-size: 2rem;
   text-align: center;
   margin-top: 4rem;
 }
 
-.counter{
+.counter {
   margin-top: 1rem;
   text-align: center;
-}
-h3{
-  font-size: 35px;
-  text-align: center;
-  
-}
-.plus , .minus{
-margin-left: 3rem;
-color: white;
-background-color: black;
-height: 20px;
-width: 40px;
+  color: black;
 }
 
-.plus:hover , .minus:hover{
+h3 {
+  font-size: 35px;
+  text-align: center;
+
+}
+
+.plus,
+.minus {
+  margin-left: 3rem;
+  color: white;
+  background-color: black;
+  height: 20px;
+  width: 40px;
+}
+
+.plus:hover,
+.minus:hover {
   box-shadow: 0px 0px 10px rgb(1, 1, 141);
 }
 
-.item{
+.items {
   display: grid;
+  grid-area: auto;
+  border-style: none;
+  border: 1px solid rgb(172, 172, 172);
+
 }
-.divCars{
+
+.items:hover {
+  box-shadow: 0px 0px 8px black;
+}
+
+.divCars {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   text-align: center;
   margin: 5rem 0;
-} */
+
+}
