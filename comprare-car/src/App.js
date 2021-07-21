@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import { ItemDetail } from './components/ItemsDetails/ItemDetail';
 import './App.css';
+import { CategoryNavBar } from './components/NavBar/CategoryNavBar';
 
 
 
@@ -26,6 +27,9 @@ function App() {
       <Navbar/>
       <ItemListContainer/>
       </div>  
+      </Route>
+      <Route exact path="/category/:1">
+        <CategoryNavBar/>
       </Route>
       <Route exact path="/pokemon/:key">
         <ItemDetail/>
