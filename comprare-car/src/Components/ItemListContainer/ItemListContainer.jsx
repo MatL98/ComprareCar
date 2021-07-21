@@ -25,7 +25,7 @@ const ItemListContainer = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
         resolve(pokemon);
-      }, msToSeg * 2);
+      }, msToSeg);
     });
     };
     getList().then((resolve) => setListItems(resolve));

@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router'
-import Navbar from '../NavBar/NavBar'
+import Navbar from './NavBar'
 
 
-export const CategoryNavBar = () =>{
+export const MotosNavBar = () =>{
     return(
         <>
         <Navbar/>

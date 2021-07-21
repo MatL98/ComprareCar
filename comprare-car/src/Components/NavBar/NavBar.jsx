@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
-import { CategoryNavBar } from "./CategoryNavBar";
 
 
 //Navegacion en conjunto con el carrito.
@@ -9,17 +8,11 @@ const Navbar = () => {
     console.log();
     return (
         <nav className="navBar">
-            <a href="/"><h1 className="navBarTitle">ComprareCar</h1></a>
+            <Link to ="/"><h1 className="navBarTitle">ComprareCar</h1></Link>
             <ul>
-                <Link key={"1"} to={`category/${CategoryNavBar}`}>
-                    <li><a href="">autos</a></li>
-                </Link>
-                <Link key={"2"} to={`category/${CategoryNavBar}`}>
-                    <li><a href="">motos</a></li>
-                </Link>
-                <Link key={"3"} to={`category/${CategoryNavBar}`}>
-                    <li><a href="">contacto</a></li>
-                </Link>
+                <li><NavLink key={"1"} to={`/autos`} activeClassName="currentCategory">Autos</NavLink></li>
+                <li><NavLink key={"2"} to={`/motos`}>Motos</NavLink></li>
+                <li><NavLink key={"3"} to={`/contacto`}>Contacto</NavLink></li>
             </ul>
             <Cart />
         </nav>
