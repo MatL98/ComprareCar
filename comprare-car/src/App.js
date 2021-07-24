@@ -14,6 +14,7 @@ import './App.css';
 import { MotosNavBar } from './components/NavBar/MotosNavBar';
 import { Contacto } from './components/NavBar/Contacto';
 import { Autos } from './components/NavBar/Autos';
+import {Loader} from './components/Loader/Loader'
 
 
 
@@ -24,7 +25,7 @@ function App() {
 
 
 
-  return ( 
+  return (
   <BrowserRouter >
     <Switch >
       <Route exact path="/" >
