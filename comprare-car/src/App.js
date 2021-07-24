@@ -11,10 +11,10 @@ import {
 } from "react-router-dom";
 import { ItemDetail } from './components/ItemsDetails/ItemDetail';
 import './App.css';
-import { MotosNavBar } from './components/NavBar/MotosNavBar';
+import { Suvs } from './components/NavBar/Suvs';
 import { Contacto } from './components/NavBar/Contacto';
 import { Autos } from './components/NavBar/Autos';
-import {Loader} from './components/Loader/Loader'
+
 
 
 
@@ -38,13 +38,13 @@ function App() {
         <Autos/>
         <ItemListContainer/>
       </Route>
-      <Route exact path="/motos">
-        <MotosNavBar/>
+      <Route exact path="/suvs">
+        <Suvs/>
       </Route>
       <Route exact path="/contacto">
         <Contacto/>
       </Route>
-      <Route exact path="/pokemon/:key">
+      <Route exact path="/detalles/:key">
         <ItemDetail/>
       </Route>
     </Switch> 

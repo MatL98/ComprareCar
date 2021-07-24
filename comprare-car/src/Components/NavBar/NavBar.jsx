@@ -11,7 +11,7 @@ const Navbar = () => {
             <Link to ="/"><h1 className="navBarTitle">ComprareCar</h1></Link>
             <ul>
                 <li><NavLink key={"1"} to={`/autos`} activeClassName="currentCategory">Autos</NavLink></li>
-                <li><NavLink key={"2"} to={`/motos`}>Motos</NavLink></li>
+                <li><NavLink key={"2"} to={`/motos`}>Suvs</NavLink></li>
                 <li><NavLink key={"3"} to={`/contacto`}>Contacto</NavLink></li>
             </ul>
             <Cart />

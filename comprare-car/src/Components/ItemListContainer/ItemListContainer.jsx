@@ -1,46 +1,41 @@
 import React, { useEffect, useState } from "react";
+import { database } from "../firebase/firebase";
 import { Item } from "./Item";
 import { Link } from "react-router-dom";
 
 const ItemListContainer = () => {
     const msToSeg = 1000;
 
-    const urlPoke = "https://pokeapi.co/api/v2/pokemon?limit=5&offset=00";
 
-    const [pokemon, setPokemon] = useState([]);
-    const [listItems, setListItems] = useState([]);
+    const [car, setCars] = useState([])
 
-    const getPokemon = () => {
-    fetch(urlPoke)
-        .then((res) => res.json())
-        .then((data) => setPokemon(data.results));
-    console.log();
-    };
+    
+        const carss = database.collection('cars')
+        carss.get().then((query)=> setCars(query.docs.map(doc => {
+            return {...doc.data(), id: doc.id};
+        })))
+    
 
-    useEffect(() => {
-        getPokemon();
-    }, []);
+        return (
+            <div className="grid-container">
+                {car.length ? (
+                    car.map((cars) => 
+                    <Link key={car.id} to={`detalles/{car.key}`}>
+                    <Item car ={cars} key={cars.id} />)
+                    </Link> 
+                    ) ): (
+                    <h5>cargando</h5>
+                )}
+            </div>
+        )
 
-    const getList = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-        resolve(pokemon);
-      }, msToSeg);
-    });
-    };
-    getList().then((resolve) => setListItems(resolve));
 
-    const pokeurls = listItems.map((p) => p.url);
-    console.log(pokeurls);
-    return (
-    <div className="grid-container">
-        {listItems.map((poke) => (
-        <Link key={poke.key} to={`pokemon/${pokemon.key}`}>
-            <Item namePoke={poke.name}></Item>
-        </Link>
-        ))}
-    </div>
-);
-};
+
+
+
+
+}
+
+
 
 export default ItemListContainer;

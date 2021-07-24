@@ -40,6 +40,7 @@ li {
   height: 60px;
   width: 60px;
 }
+
 .grid-container {
   display: grid;
   grid-template-areas: "items";
@@ -57,6 +58,10 @@ li {
 }
 .items:hover {
   box-shadow: 0px 0px 8px black;
+}
+.carImg{
+  height: 300px;
+  width: 400px;
 }
 
 h2 {

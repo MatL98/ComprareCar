@@ -1,16 +1,13 @@
 
 import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
 
 
-
-
-
-export const Item = ({ namePoke }) => {
+export const Item = ({ car }) => {
     return (
         <div className="items" >
-            <h3 className="titlePokemon">{namePoke}</h3>
-            <ItemCount initital={1} stock={8}></ItemCount>
+            <img className="carImg" src={car.img}/>
+            <h2 className="titlePokemon">{car.brand}</h2>
+            <p>{car.model}</p>
         </div>
     )
 }
