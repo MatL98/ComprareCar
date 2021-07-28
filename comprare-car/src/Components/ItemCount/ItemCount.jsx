@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-const ItemCount = ({ stock, initital }) => {
-  const [count, setCount] = useState(0);
-  console.log(stock);
+const ItemCount = ({ stock, initital, count, setCount }) => {
 
   function addOn() {
     if (initital >= 1 && count < stock) {

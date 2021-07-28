@@ -45,7 +45,7 @@ li {
   display: grid;
   grid-template-areas: "items";
   grid-gap: 0.5rem;
-  margin: 5rem 2rem;
+  margin: 2rem 1rem;
 }
 
 .items {
@@ -53,6 +53,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 0.5rem;
   border: 1px solid rgb(172, 172, 172);
 }
@@ -64,18 +65,18 @@ li {
   width: 400px;
 }
 
-h2 {
-  font: 700;
-  font-size: 2rem;
-  text-align: center;
-  margin-top: 4rem;
-}
 
-.titlePokemon {
-  font-size: 2rem;
+.titleCar {
+  font-size: 2.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-align: center;
+  margin: 0;
+  color: #000;
+}
+.pCar{
+  font-size: 1.5rem;
+  color: #000;
 }
 a {
   text-decoration: none;
@@ -107,13 +108,29 @@ h3 {
 }
 
 .itemDetails {
-  height: 300px;
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.divItemDetails{
+  display: flex;
+  flex-direction: column;
+  height: 8rem;
+  width: 8rem;
   margin: 0 auto;
   border: 1px solid gray;
 }
 
 @media screen and (min-width: 480px) {
+  .grid-container {
+    display: grid;
+    grid-template-areas: "items";
+    margin: 5rem 2rem;
+  }
+} 
+@media screen and (min-width: 720px) {
   .grid-container {
     grid-template-areas: "items items items";
   }

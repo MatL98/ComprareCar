@@ -1,39 +1,68 @@
-import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router'
-import { database } from '../firebase/firebase'
-import Navbar from '../NavBar/NavBar'
-import ItemCount from '../ItemCount/ItemCount';
+import React, { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router";
+import { CartContext } from "../../services/CartContext";
+import { database } from "../firebase/firebase";
+import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
-const ButtonCount = {};
-const inputCount = {}
+const ItemDetail = ({ carTodisplay: car }) => {
+    const [addToCart, removeCart] = useContext(CartContext);
 
+    const [count, setCount] = useState(1);
 
+    const [finished, setFinished] = useState(false);
 
-export  const ItemDetail = ({initial, stock}) =>{
-    const Count = inpuType === 'button' ?
-        ButtonCount : Count;
-        const stock = item.stock;
-        const initial = item.initial;
+    const handleState = () => setFinished(!finished);
 
-    function addToCart(quantity){
-        if(item.inStock){
-            console.log(`Agregar al cart el item: 
-            ${car.id} cantidad ${quantity}`)
-        }
-    }
+    const handleSend = () => {
+        addToCart({ ...car, quantatity: count });
+    };
+    const handleRemove = () => {
+        removeCart(car);
+    };
 
-
-
-
-    return(
-        <>
-        <Navbar/>
+    return (
         <div className="itemDetails">
-            <h2>Nombre</h2>
-
-            <ItemCount initital={1} stock={8}></ItemCount>
-
+        <img className="carImg" src={car.img} alt={car.id} />
+        <h2>{car.brand}</h2>
+        <p>
+            {car.model}, {car.year}
+        </p>
+        <p>{car.HP}</p>
+        <h5>{car.price}</h5>
+        {!finished ? (
+            <>
+            <ItemCount
+                initital={1}
+                count={count}
+                setCount={setCount}
+                stock={8}
+            ></ItemCount>
+            <button
+                onClick={() => {
+                handleState();
+                handleSend();
+                }}
+            >
+                Comprar
+            </button>
+            </>
+        ) : (
+            <>
+            <Link to="/cart" onClick={handleState}>
+                <button onClick={handleState}>Confirmar compra</button>
+            </Link>
+            <button
+                onClick={() => {
+                handleState();
+                handleRemove();
+                }}
+            >
+                Modificar compra
+            </button>
+            </>
+        )}
         </div>
-        </>    
-    )
-}
+    );
+};
+export default ItemDetail;

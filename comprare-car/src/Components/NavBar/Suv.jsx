@@ -6,8 +6,8 @@ import { Item } from '../ItemListContainer/Item';
 
 
 
-export const Autos = () =>{
-    let categoria = "coupe"
+export const Suv = () =>{
+    let categoria = "suv"
 
     const [car, setCars] = useState([])
 
@@ -24,4 +24,4 @@ export const Autos = () =>{
             </div>
         )
 
-} 
+}
