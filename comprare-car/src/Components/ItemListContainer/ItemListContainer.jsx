@@ -2,23 +2,31 @@ import React, { useEffect, useState } from "react";
 import { database } from "../firebase/firebase";
 import { Item } from "./Item";
 import { Link, useParams } from "react-router-dom";
-import { ItemDetail } from "../ItemsDetails/ItemDetail";
-import { ItemList } from "../ItemListContainer/ItemList";
+
 
 const ItemListContainer = () => {
     const msToSeg = 1000;
 
-    const { categoria } = useParams();
     const [car, setCars] = useState([]);
 
-    const carss = database.collection("cars");
-    carss.get().then((query) =>
+    
+
+    useEffect(() => {
+        getCars()
+    }, []);
+    
+
+    const getCars =  () =>{
+        const cars =  database.collection("cars");
+        cars.get().then((query) =>
         setCars(
         query.docs.map((doc) => {
-            return { ...doc.data(), categoria: doc.category, id: doc.id };
+            return { ...doc.data(), id: doc.id };
         })
         )
-    );
+    ); 
+    }
+
 
     return (
         <div className="grid-container">

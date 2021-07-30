@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/categoria/suv">
             <Suv/>
           </Route>
-          <Route exact path="/item/:${car.id}">
+          <Route exact path="/item/:car.id">
             <ItemDetailContainer/>
           </Route>
         </Switch>

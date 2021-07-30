@@ -7,34 +7,34 @@ const ItemDetailContainer = () => {
     const msToSeg = 1000;
     const [car, setCars] = useState([]);
 
-    const carss = database.collection("cars");
-    carss.get().then((query) =>
-        setCars(
-        query.docs.map((doc) => {
-            return { ...doc.data(), id: doc.id };
-        })
-        )
-    );
+    
 
-    const [carToDisplay, setCarToDisplay] = useState();
+    const [carToDisplay, setCarToDisplay] = useState([]);
     const { id: idParams } = useParams();
 
     const getSelectedCar = () => {
-        return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(car.find((item) => item.id.toString() === idParams));
-        }, msToSeg * 2);
-        });
+            const cars = database.collection("cars");
+            cars.get().then((query) =>
+            setCars(
+            query.docs.map((doc) => {
+                return { ...doc.data(), id: doc.id };
+            })
+        )
+    );
+        car.find((item) => item.id.toString() === idParams)
+        
     };
     useEffect(() => {
-        getSelectedCar().then((result) => setCarToDisplay(result));
+        getSelectedCar();
     }, [idParams]);
+    
 
     return !carToDisplay ? (
         <h5>cargando</h5>
     ) : (
-        <ItemDetail carTodisplay={carToDisplay} key={car.id} />
+        <ItemDetail carTodisplay={car} key="car.id"/>
     );
+    
 };
 
 export default ItemDetailContainer;

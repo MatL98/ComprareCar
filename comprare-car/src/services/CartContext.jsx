@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react'
+/* import React, {createContext, useContext, useState} from 'react'
 
 export const CartContext = createContext();
 export const DataProvider = ({children}) => {
@@ -16,7 +16,7 @@ export const DataProvider = ({children}) => {
     }
 
     const removeCart = (receivedItem) =>{
-        let allItems = cart.filter(item => item.id != receivedItem.id)
+        let allItems = cart.filter(item => item.id !== receivedItem.id)
         setCart(allItems)
     }
 
@@ -27,4 +27,4 @@ export const DataProvider = ({children}) => {
             {children}
         </useContext.Provider>
     )
-}
+} */
