@@ -1,3 +1,3 @@
-<h1 color: "red"> Welcome to ComprareCar</h1>
+<h1> Welcome to ComprareCar</h1>
 
 
