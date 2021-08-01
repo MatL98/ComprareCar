@@ -6,9 +6,12 @@ import "./App.css";
 import { Autos } from "./components/NavBar/Autos";
 import { Suv } from "./components/NavBar/Suv";
 import ItemDetailContainer from "./components/ItemsDetails/ItemDetailContainer";
+import { CartProvider } from "./services/CartContext";
+
 
 function App() {
   return (
+    <CartProvider>
     <BrowserRouter>
       <div className="App">
         <Navbar/>
@@ -22,12 +25,13 @@ function App() {
           <Route exact path="/categoria/suv">
             <Suv/>
           </Route>
-          <Route exact path="/item/:car.id">
+          <Route exact path="/item/:id">
             <ItemDetailContainer/>
           </Route>
         </Switch>
       </div>
     </BrowserRouter>
+  </CartProvider>
   );
 }
 

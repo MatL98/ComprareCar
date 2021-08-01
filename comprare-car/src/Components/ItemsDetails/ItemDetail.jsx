@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
-//import { CartContext } from "../../services/CartContext";
-import { database } from "../firebase/firebase";
+import { CartContext } from "../../services/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 
-const ItemDetail = ({ carTodisplay: car }) => {
-    //const [addToitem, removeitem] = useContext(CartContext)
+const ItemDetail = ({ carItem }) => {
+
+    
 
     const [count, setCount] = useState(1);
 
@@ -14,53 +14,61 @@ const ItemDetail = ({ carTodisplay: car }) => {
 
     const handleState = () => setFinished(!finished);
 
+    const {carrito, addToItem, removeitem} = useContext(CartContext);
+    
     const handleSend = () => {
-        //addToitem({ ...car, quantatity: car });
+        addToItem({ ...carItem });
     };
     const handleRemove = () => {
-        //removeitem(car);
+        //removeitem(carItem);
     };
 
     return (
-        <div className="itemDetails">
-        <img className="itemImg" src={car.img} alt={car.id} />
-        <h2>{car.brand} TODO BIEN</h2>
-        <p>{car.model}</p>
-        <p>{car.HP} funciona minimamente</p>
-        <h5>{car.price}</h5>
-        {!finished ? (
-            <>
-            <ItemCount
-                initital={1}
-                count={count}
-                setCount={setCount}
-                stock={8}
-            ></ItemCount>
-            <button
-                onClick={() => {
-                handleState();
-                handleSend();
-                }}
-            >
-                Comprar
-            </button>
-            </>
+        <>
+        {!carItem ? (
+            <h5>cargando</h5>
         ) : (
-            <>
-            <Link to="/item" onClick={handleState}>
-                <button onClick={handleState}>Confirmar compra</button>
-            </Link>
-            <button
-                onClick={() => {
-                handleState();
-                handleRemove();
-                }}
-            >
-                Modificar compra
-            </button>
-            </>
+            <div className="itemDetails">
+            <img className="itemImg" src={carItem.img} alt={carItem.id} />
+            <h2>{carItem.brand}</h2>
+            <p>{carItem.model} modelo: {carItem.year}</p>
+            <p>Caballos de fuerza: {carItem.HP}</p>
+            <h5>Precio: $ {carItem.price}</h5>
+            {!finished ? (
+                <>
+                <ItemCount
+                    initital={1}
+                    count={count}
+                    setCount={setCount}
+                    stock={8}
+                ></ItemCount>
+                <button
+                    onClick={() => {
+                    handleState();
+                    handleSend();
+                    }}
+                >
+                    Comprar
+                </button>
+                </>
+            ) : (
+                <>
+                <Link to="/cart" onClick={handleState}>
+                    <button onClick={handleState}>Confirmar compra</button>
+                </Link>
+                <button
+                    onClick={() => {
+                    handleState();
+                    handleRemove();
+                    }}
+                >
+                    Modificar compra
+                </button>
+                </>
+            )}
+            </div>
         )}
-        </div>
+        </>
     );
 };
 export default ItemDetail;

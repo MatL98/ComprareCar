@@ -1,30 +1,19 @@
-/* import React, {createContext, useContext, useState} from 'react'
+import React, {createContext, useContext, useState} from 'react'
 
 export const CartContext = createContext();
-export const DataProvider = ({children}) => {
-    const [cart, setCart] = useState([])
 
-    const noneCart= (receivedItem) => cart.filter(item => item.id === receivedItem.id).length ===0;
+export const CartProvider = ({children}) =>{
+    const [carrito, setCarrito] = useState([])
 
-    const addToCart = (receivedItem) =>{
-
-        if(noneCart(receivedItem)){
-            setCart([...cart,receivedItem]);
-        } else{
-            alert("este item ya esta en el carrito")
-        }
+    const addToItem = (item) =>{
+        setCarrito([...carrito, item])
+    }
+    const removeitem = (item)=>{
+        setCarrito(...carrito)
     }
 
-    const removeCart = (receivedItem) =>{
-        let allItems = cart.filter(item => item.id !== receivedItem.id)
-        setCart(allItems)
-    }
+    return <CartContext.Provider value={{carrito, addToItem, removeitem}}>
+        {children}
+    </CartContext.Provider>
 
-    const clear = ()=> setCart([])
-
-    return (
-        <useContext.Provider value ={{cart, setCart}}>
-            {children}
-        </useContext.Provider>
-    )
-} */
+}
