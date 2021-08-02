@@ -28,6 +28,8 @@ ul {
   list-style: none;
   align-items: center;
   justify-content: center;
+
+  
 }
 
 li {
@@ -36,10 +38,20 @@ li {
   letter-spacing: 1px;
 }
 
+.cart-container{
+  display: flex;
+  flex-direction: column;
+}
+.cartWidget{
+  display: flex;  
+  justify-content: flex-end;
+  z-index: 100;
+}
 .cartImg {
   height: 60px;
   width: 60px;
 }
+
 
 .grid-container {
   display: grid;
@@ -81,6 +93,7 @@ li {
 a {
   text-decoration: none;
   color: white;
+  font-size: 1.2rem;
 }
 h3 {
   text-transform: lowercase;

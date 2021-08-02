@@ -1,8 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import Cart from "../Cart/Cart";
-import { database } from "../firebase/firebase";
-import { Autos } from "./Autos";
+import CartWidget from "../Cart/CartWidget";
+
 
 
 
@@ -17,7 +16,7 @@ const Navbar = () => {
                 <li><NavLink key={"1"} to={`/categoria/coupe`}>Coupe</NavLink></li>
                 <li><NavLink key={"2"} to={`/categoria/suv`}>suvs</NavLink></li>
             </ul>
-            <Cart />
+                <CartWidget />
         </nav>
     );
 };

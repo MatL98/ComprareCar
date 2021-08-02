@@ -7,6 +7,10 @@ import { Autos } from "./components/NavBar/Autos";
 import { Suv } from "./components/NavBar/Suv";
 import ItemDetailContainer from "./components/ItemsDetails/ItemDetailContainer";
 import { CartProvider } from "./services/CartContext";
+import Cart from "./components/Cart/Cart";
+
+
+
 
 
 function App() {
@@ -27,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/item/:id">
             <ItemDetailContainer/>
+          </Route>
+          <Route>
+            <Cart/>
           </Route>
         </Switch>
       </div>

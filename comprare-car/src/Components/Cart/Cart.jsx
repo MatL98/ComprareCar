@@ -1,9 +1,19 @@
-import React from 'react';
-import CartImg from '../../img/carrito-de-compras.png'
+import React, { createContext, useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../services/CartContext";
+import ItemDetail from "../ItemsDetails/ItemDetail";
 
-//Carrito de compra
-const Cart = () => {
-    return <img className = "cartImg" src={CartImg} alt="Carrito" />
+
+
+const Cart = () =>{
+    const {carrito, totalCart, totalCantidad} = useContext(CartContext);
+
+
+    return(
+        <div>
+            {`Total: $ ${totalCart()} dolares`}
+        </div>
+    )
+
 }
-
 export default Cart;

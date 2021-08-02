@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const ItemDetail = ({ carItem }) => {
 
-    
+    const {id: idParams} = useParams()
 
     const [count, setCount] = useState(1);
 
@@ -17,10 +17,16 @@ const ItemDetail = ({ carItem }) => {
     const {carrito, addToItem, removeitem} = useContext(CartContext);
     
     const handleSend = () => {
-        addToItem({ ...carItem });
+        addToItem({ img: <img src= {carItem.img} alt={carItem.id}/>,
+                    name: carItem.brand,
+                    model: carItem.model,
+                    price: carItem.price,
+                    cantidad: count,
+                    idcar: idParams});
     };
+    console.log(carrito)
     const handleRemove = () => {
-        //removeitem(carItem);
+        removeitem({idParams});
     };
 
     return (
