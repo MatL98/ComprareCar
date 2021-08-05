@@ -17,14 +17,13 @@ const ItemDetail = ({ carItem }) => {
     const {carrito, addToItem, removeitem} = useContext(CartContext);
     
     const handleSend = () => {
-        addToItem({ img: <img src= {carItem.img} alt={carItem.id}/>,
+        addToItem({ img: "/" + carItem.img,
                     name: carItem.brand,
                     model: carItem.model,
                     price: carItem.price,
                     cantidad: count,
                     idcar: idParams});
     };
-    console.log(carrito)
     const handleRemove = () => {
         removeitem({idParams});
     };

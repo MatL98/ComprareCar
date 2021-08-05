@@ -2,13 +2,15 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-export const Item = ({ car }) => {
+export const Item = ({ car, cantidad }) => {
     return (
         <Link to={`/item/${car.id}`} key = {car.id}>
         <div className="items" >
-            <img className="carImg" src={car.img} alt='{car.brand}'/>
+            <img className="carImg" src={car.img} alt={car.brand}/>
             <h2 className="titleCar">{car.brand}</h2>
             <p className="pCar">{car.model}</p>
+            <p className="pCar"> Cantidad: {cantidad}</p>
+            <span className="priceCar"> $ {car.price} </span>
         </div>
         </Link>
     )

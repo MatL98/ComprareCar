@@ -105,6 +105,9 @@ h3 {
   justify-content: center;
   text-align: center;
 }
+.priceCar{
+  color: green;
+}
 
 .plus,
 .minus {
