@@ -8,6 +8,7 @@ import { Suv } from "./components/NavBar/Suv";
 import ItemDetailContainer from "./components/ItemsDetails/ItemDetailContainer";
 import { CartProvider } from "./services/CartContext";
 import Cart from "./components/Cart/Cart";
+import Form from "./components/form/form";
 
 
 
@@ -32,8 +33,9 @@ function App() {
           <Route exact path="/item/:id">
             <ItemDetailContainer/>
           </Route>
-          <Route>
+          <Route exact path="/cart">
             <Cart/>
+            <Form></Form>
           </Route>
         </Switch>
       </div>

@@ -53,43 +53,13 @@ li {
 }
 
 
-.grid-container {
-  display: grid;
-  grid-template-areas: "items";
-  grid-gap: 0.5rem;
-  margin: 2rem 1rem;
-}
-
-.items {
-  border-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  border: 1px solid rgb(172, 172, 172);
-}
-.items:hover {
-  box-shadow: 0px 0px 8px black;
-}
-.carImg{
-  height: 300px;
-  width: 400px;
-}
 
 
-.titleCar {
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center;
-  margin: 0;
-  color: #000;
-}
-.pCar{
-  font-size: 1.5rem;
-  color: #000;
-}
+
+
+
+
+
 a {
   text-decoration: none;
   color: white;
@@ -105,9 +75,7 @@ h3 {
   justify-content: center;
   text-align: center;
 }
-.priceCar{
-  color: green;
-}
+
 
 .plus,
 .minus {
@@ -139,15 +107,3 @@ h3 {
   border: 1px solid gray;
 }
 
-@media screen and (min-width: 480px) {
-  .grid-container {
-    display: grid;
-    grid-template-areas: "items";
-    margin: 5rem 2rem;
-  }
-} 
-@media screen and (min-width: 720px) {
-  .grid-container {
-    grid-template-areas: "items items items";
-  }
-}

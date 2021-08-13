@@ -2,41 +2,37 @@ import React, { useEffect, useState } from "react";
 import { database } from "../firebase/firebase";
 import { Item } from "./Item";
 import { Link, useParams } from "react-router-dom";
-
+import {ItemListStyles} from "./ItemListContainerStyle";
 
 const ItemListContainer = () => {
-    const msToSeg = 1000;
+  const msToSeg = 1000;
 
-    const [car, setCars] = useState([]);
+  const [car, setCars] = useState([]);
 
-    
+  useEffect(() => {
+    getCars();
+  }, []);
 
-    useEffect(() => {
-        getCars()
-    }, []);
-    
-
-    const getCars =  () =>{
-        const cars =  database.collection("cars");
-        cars.get().then((query) =>
-        setCars(
+  const getCars = () => {
+    const cars = database.collection("cars");
+    cars.get().then((query) =>
+      setCars(
         query.docs.map((doc) => {
-            return { ...doc.data(), id: doc.id };
+          return { ...doc.data(), id: doc.id };
         })
-        )
-    ); 
-    }
-
-
-    return (
-        <div className="grid-container">
-        {car.length ? (
-            car.map((cars) => <Item car={cars} key={cars.id} />)
-        ) : (
-            <h5>cargando</h5>
-        )}
-        </div>
+      )
     );
+  };
+
+  return (
+		<ItemListStyles>
+      {car.length ? (
+        car.map((cars) => <Item car={cars} key={cars.id} />)
+      ) : (
+        <h5>cargando</h5>
+      )}
+		</ItemListStyles>
+  );
 };
 
 export default ItemListContainer;
