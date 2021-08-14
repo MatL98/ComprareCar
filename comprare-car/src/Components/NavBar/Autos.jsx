@@ -1,27 +1,26 @@
-import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router'
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
 import { database } from "../firebase/firebase";
-import { Item } from '../ItemListContainer/Item';
+import { Item } from "../ItemListContainer/Item";
 
+export const Autos = () => {
+  let categoria = "coupe";
 
+  const [car, setCars] = useState([]);
 
-export const Autos = () =>{
-    let categoria = "coupe"
+  const carss = database.collection("cars").where("category", "==", categoria);
+  carss.get().then((query) =>
+    setCars(
+      query.docs.map((doc) => {
+        return { ...doc.data(), categoria: doc.category, id: doc.id };
+      })
+    )
+  );
 
-    const [car, setCars] = useState([])
-
-    
-        const carss = database.collection('cars').where("category", "==", categoria)
-        carss.get().then((query)=> setCars(query.docs.map(doc => {
-            return {...doc.data(), categoria: doc.category, id: doc.id};
-        })))
-
-
-        return (
-            <div className="grid-container">
-                {car.map(c => <Item car ={c} key={c.id}/>)}
-            </div>
-        )
-
-} 
+  return (
+    <div className="grid-container">
+      {car.map((c) => (
+        <Item car={c} key={c.id} />
+      ))}
+    </div>
+  );
+};

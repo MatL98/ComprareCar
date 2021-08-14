@@ -15,7 +15,7 @@ export const ItemStyle = styled.div`
   box-shadow: 0px 0px 8px black;
 }
 img{
-  height: 300px;
+  height: 100%px;
   width: 400px;
 }
 h2{
@@ -24,15 +24,17 @@ h2{
   letter-spacing: 1px;
   text-align: center;
 	font-family: 'Poppins', sans-serif;
-	font-weid: 500;
+	font-weight: 500;
   margin: 0;
   color: black;
+  
 }
 p{
 	font-size: 1.3rem;
 	font-family: 'Poppins', sans-serif;
 	font-size: 400 italic;
   color: #000;
+  
 }
 span{
   color: green;

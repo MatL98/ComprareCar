@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { database, getFirebase } from "../firebase/firebase";
-import { Link, useParams } from "react-router-dom";
+import { database } from "../firebase/firebase";
+import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 
 
@@ -30,12 +30,11 @@ const ItemDetailContainer = () => {
             .finally(()=>{
                 setLoading(false)
             })
-
         }, [idParams]);
     
 
     return !carItem ? (
-        <h5>cargando</h5>
+        <h5>cargando...</h5>
     ) : (
         <ItemDetail carItem ={carItem} key={carItem.id}/>
     );

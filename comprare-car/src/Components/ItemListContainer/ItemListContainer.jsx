@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../firebase/firebase";
 import { Item } from "./Item";
-import { Link, useParams } from "react-router-dom";
 import {ItemListStyles} from "./ItemListContainerStyle";
 
 const ItemListContainer = () => {
-  const msToSeg = 1000;
+
 
   const [car, setCars] = useState([]);
 

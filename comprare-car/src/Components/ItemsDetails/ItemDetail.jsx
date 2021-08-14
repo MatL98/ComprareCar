@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router";
 import { CartContext } from "../../services/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
@@ -17,10 +17,11 @@ const ItemDetail = ({ carItem }) => {
 
   const handleSend = () => {
     addToItem({
-      img: "/" + carItem.img,
+      img: carItem.img,
       name: carItem.brand,
       model: carItem.model,
       price: carItem.price,
+      stock: carItem.stock,
       cantidad: count,
       idcar: idParams,
     });
@@ -41,6 +42,7 @@ const ItemDetail = ({ carItem }) => {
             {carItem.model} modelo: {carItem.year}
           </p>
           <p>Caballos de fuerza: {carItem.HP}</p>
+          <p>Stock: {carItem.stock}</p>
           <h5>Precio: $ {carItem.price}</h5>
           {!finished ? (
             <>
@@ -48,7 +50,7 @@ const ItemDetail = ({ carItem }) => {
                 initital={1}
                 count={count}
                 setCount={setCount}
-                stock={8}
+                stock={carItem.stock}
               ></ItemCount>
               <button
                 onClick={() => {

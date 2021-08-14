@@ -1,15 +1,16 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import CartWidget from "../Cart/CartWidget";
-
+import { NavBarStyle } from "./NavBarStyles";
 //Navegacion en conjunto con el carrito.
 const Navbar = () => {
   return (
-    <nav className="navBar">
+    <NavBarStyle>
+      <nav>
       <Link to="/">
-        <h1 className="navBarTitle">ComprareCar</h1>
+        <h1 className="title">ComprareCar</h1>
       </Link>
-      <ul>
+      <ul className="navBarUl">
         <li>
           <NavLink key={"1"} to={`/categoria/coupe`}>
             Coupe
@@ -24,7 +25,8 @@ const Navbar = () => {
       <Link to="/cart">
         <CartWidget />
       </Link>
-    </nav>
+      </nav>
+    </NavBarStyle>
   );
 };
 

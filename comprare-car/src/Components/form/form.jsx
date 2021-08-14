@@ -1,23 +1,23 @@
 import React from "react";
-///Importamos tanto firebase como la base de datos
 import firebase from "firebase/app";
 import { database } from "../firebase/firebase";
-
 //import { StyledForm } from "./FormStyles";
 
 const Form = ({ cart, total, clearCart }) => {
   const handleSubmit = (event) => {
+
     ///Evitamos el comportamiento default de los forms
     event.preventDefault();
-
+    console.log(event);
     ///Capturamos la data del usuario
     const userData = {
-      name: event.target[0].value,
+      name: event.target.name.value,
       surname: event.target[1].value,
       phone: event.target[2].value,
       email: event.target[3].value,
+      
     };
-
+    
     ///Juntamos la data de la orden
     const newOrder = {
       buyer: userData,
@@ -51,7 +51,7 @@ const Form = ({ cart, total, clearCart }) => {
     ///va a comprar
 
     ///Seleccionamos dichos items
-    const itemsToCheck = database.collection("items").where(
+    const itemsToCheck = database.collection("cars").where(
       firebase.firestore.FieldPath.documentId(),
       "in",
       cart.map((item) => item.id)
@@ -71,13 +71,13 @@ const Form = ({ cart, total, clearCart }) => {
 
       query.docs.forEach((doc, index) => {
         ///Si hay stock, agregamos al batch la operación para RESTARLE al stock
-        if (doc.data().stock >= newOrder.items[index].quantity) {
+        if (doc.data().stock >= newOrder.items[index].cantidad) {
           ///Si el stock es MAYOR o IGUAL a la cantidad solicitada, vamos a realizar una operación
           ///Con el doc.ref, basicamente le decimos que seleccione el mismo
           batch.update(doc.ref, {
             ///La operación que vamos a hacer es RESTAR al stock del item, la cantidad pedida
             ///por el usuario
-            stock: doc.data().stock - newOrder.items[index].quantity,
+            stock: doc.data().stock - newOrder.items[index].cantidad,
           });
         } else {
           ///SI NO HAY STOCK, vamos a pushear el item en cuestión al array de sin stock
@@ -104,7 +104,7 @@ const Form = ({ cart, total, clearCart }) => {
   return (
     < div onSubmit={handleSubmit}>
       <h2>Finalizar Compra</h2>
-      <input placeholder="Nombre" type="text" />
+      <input placeholder="Nombre" type="text" id="name"/>
       <input placeholder="Apellido" type="text" />
       <input placeholder="Teléfono" type="tel" />
       <input placeholder="E-mail" type="email" />
