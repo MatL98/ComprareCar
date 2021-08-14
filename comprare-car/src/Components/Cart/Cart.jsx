@@ -25,7 +25,7 @@ const Cart = () => {
         Total de items a comprar:{" "}
         <span className="spanCart">{totalCantidad()}</span>
       </p>
-      <Form cart={carrito} total={totalCantidad} />
+      <Form cart={carrito} total={totalCart()} />
     </CartStyle>
   );
 };
