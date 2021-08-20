@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../services/CartContext";
 import { CartStyle } from "./CartStyles";
 import { ItemCart } from "./ItemCart";
-import Form from "../form/form";
+import Form from '../Form/Form';
 
 const Cart = () => {
   const { carrito, totalCart, totalCantidad, isInCart } = useContext(CartContext);
