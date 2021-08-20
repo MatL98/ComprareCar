@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { CartContext } from "../../services/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
+import { ItemDetailStyle } from "./ItemDetailStyles";
 
 const ItemDetail = ({ carItem }) => {
   const { id: idParams } = useParams();
@@ -35,15 +36,16 @@ const ItemDetail = ({ carItem }) => {
       {!carItem ? (
         <h5>cargando</h5>
       ) : (
-        <div className="itemDetails">
+        <ItemDetailStyle className="itemDetails">
           <img className="itemImg" src={carItem.img} alt={carItem.id} />
-          <h2>{carItem.brand}</h2>
-          <p>
-            {carItem.model} modelo: {carItem.year}
-          </p>
-          <p>Caballos de fuerza: {carItem.HP}</p>
-          <p>Stock: {carItem.stock}</p>
-          <h5>Precio: $ {carItem.price}</h5>
+          <div className="itemDetail">
+            <h2>{carItem.brand}  {carItem.model}</h2>
+            <p>
+              Modelo: {carItem.year}
+            </p>
+            <p>Caballos de fuerza: {carItem.HP}</p>
+            <p>Stock: {carItem.stock}</p>
+            <h5>Precio: $ {carItem.price}</h5>
           {!finished ? (
             <>
               <ItemCount
@@ -52,7 +54,7 @@ const ItemDetail = ({ carItem }) => {
                 setCount={setCount}
                 stock={carItem.stock}
               ></ItemCount>
-              <button
+              <button className="btn-buy"
                 onClick={() => {
                   handleState();
                   handleSend();
@@ -63,10 +65,10 @@ const ItemDetail = ({ carItem }) => {
             </>
           ) : (
             <>
-              <Link to="/cart" onClick={handleState}>
-                <button onClick={handleState}>Confirmar compra</button>
+              <Link to="/cart" onClick={handleState}> 
+                <button className="btn-agree" onClick={handleState}>Confirmar compra</button>
               </Link>
-              <button
+              <button className="btn-edit"
                 onClick={() => {
                   handleState();
                   handleRemove();
@@ -76,7 +78,8 @@ const ItemDetail = ({ carItem }) => {
               </button>
             </>
           )}
-        </div>
+          </div>
+        </ItemDetailStyle>
       )}
     </>
   );

@@ -6,6 +6,10 @@ export const FooterStyle = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        background-color: rgb(99, 99, 99);
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
     .footerLink{
         padding: 0 10px;

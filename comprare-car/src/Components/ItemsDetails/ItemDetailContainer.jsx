@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { database } from "../firebase/firebase";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
+import { ItemDetailStyle } from "./ItemDetailStyles";
 
 
 
@@ -35,7 +36,7 @@ const ItemDetailContainer = () => {
 
     return !carItem ? (
         <h5>cargando...</h5>
-    ) : (
+    ) : ( 
         <ItemDetail carItem ={carItem} key={carItem.id}/>
     );
     

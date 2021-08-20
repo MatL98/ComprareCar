@@ -16,11 +16,10 @@ const ItemCount = ({ stock, initital, count, setCount }) => {
 
   return (
     <div className="counter">
-        <h3>Cantidad: {count}</h3>
         <button onClick={remove} className="minus">
         -
         </button>
-
+        <h3> Cantidad: {count}</h3>
         <button onClick={addOn} className="plus">
         +
         </button>
