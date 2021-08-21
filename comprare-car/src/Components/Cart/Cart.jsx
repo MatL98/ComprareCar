@@ -3,18 +3,20 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../services/CartContext";
 import { CartStyle } from "./CartStyles";
 import { ItemCart } from "./ItemCart";
-import Form from '../Form/Form';
+import Form from '../Form/Form'
 
 const Cart = () => {
   const { carrito, totalCart, totalCantidad, isInCart } = useContext(CartContext);
 
   return carrito.length < 1 ? (
-    <div>
-      <h5>No hay compras en el carrito..</h5>{" "}
-      <Link to="/">
-        <button>Volver al home</button>
-      </Link>
-    </div>
+    <CartStyle>
+      <div className="cartNoItem">
+        <h5>No hay compras en el carrito..</h5>{" "}
+        <Link to="/">
+          <button className="btnBack">Volver al home</button>
+        </Link>
+      </div>
+    </CartStyle>
   ) : (
     <CartStyle className="cartStyle">
       {carrito.map((c) => (

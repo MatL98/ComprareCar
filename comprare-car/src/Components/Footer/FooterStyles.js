@@ -20,4 +20,16 @@ export const FooterStyle = styled.div`
     .footerA{
         color: white;
     }
+
+    img{
+        padding: 0.3rem;
+        height: 50px;
+        width: 50px;
+    }
+    h5{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: white;
+    }
 `

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { database } from "../firebase/firebase";
+import { database } from "../../services/firebase/firebase";
 import { Item } from "../ItemListContainer/Item";
 
 export const Suv = () => {

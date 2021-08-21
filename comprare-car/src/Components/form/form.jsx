@@ -1,7 +1,7 @@
 import React from "react";
-import firebase from "firebase/app";
-import { database } from "../firebase/firebase";
-//import { StyledForm } from "./FormStyles";
+import firebase from "firebase";
+import { database } from "../../services/firebase/firebase";
+import { FormStyle } from "./FormStyles";
 
 const Form = ({ cart, total, clearCart }) => {
   const handleSubmit = (event) => {
@@ -72,16 +72,18 @@ const Form = ({ cart, total, clearCart }) => {
   };
 
   return (
-    <div onSubmit={handleSubmit}>
-      <h2>Finalizá tu compra</h2>
-      <form action="#">
-        <input placeholder="Nombre" type="text" id="name" />
-        <input placeholder="Apellido" type="text" id="sname" />
-        <input placeholder="Teléfono" type="tel" id="phoneNumber" />
-        <input placeholder="E-mail" type="email" id="mail" />
-        <button type="submit">COMPRAR</button>
-      </form>
-    </div>
+    <FormStyle className="formStyle">
+      <div onSubmit={handleSubmit}>
+        <h2>Finalizá tu compra</h2>
+        <form action="#">
+          <input placeholder="Nombre" type="text" id="name" />
+          <input placeholder="Apellido" type="text" id="sname" />
+          <input placeholder="Teléfono" type="tel" id="phoneNumber" />
+          <input placeholder="E-mail" type="email" id="mail" />
+          <button type="submit">COMPRAR</button>
+        </form>
+      </div>
+    </FormStyle>
   );
 };
 

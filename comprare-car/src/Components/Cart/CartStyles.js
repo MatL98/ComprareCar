@@ -1,14 +1,30 @@
 import styled from "styled-components";
 
 export const CartStyle = styled.div`
-    display: grid;
-    margin: 2rem 1rem;
-    grid-gap: 0.5rem;
+    {
+        display: grid;
+        margin: 2rem 1rem;
+        grid-gap: 0.5rem;
+    }    
 
     @media screen and (min-width: 768px) {
     {
     grid-template-areas: "item item";
+    justify-content: center;
     }
+    }
+    h5{
+        font-family: "Poppins", sans-serif;
+        font-size: 70px;
+    }
+    .btnBack{
+        height: 50px;
+        width: 150px;
+        font-size: 1.2rem;
+        text-transform: lowercase;
+        color: white;
+        background-color: black;
+        border-radius: 50px;
     }
 
     .pCart{
@@ -19,5 +35,12 @@ export const CartStyle = styled.div`
         font-size: 1.8rem;
         color: gold;
         
+    }
+    .cartNoItem{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5rem;
     }
 `
