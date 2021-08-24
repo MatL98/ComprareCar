@@ -4,6 +4,7 @@ import { CartContext } from "../../services/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { ItemDetailStyle } from "./ItemDetailStyles";
+import Loader from "../Loader/Loader";
 
 const ItemDetail = ({ carItem }) => {
   const { id: idParams } = useParams();
@@ -34,7 +35,7 @@ const ItemDetail = ({ carItem }) => {
   return (
     <>
       {!carItem ? (
-        <h5>cargando</h5>
+        <Loader/>
       ) : (
         <ItemDetailStyle className="itemDetails">
           <img className="itemImg" src={carItem.img} alt={carItem.id} />

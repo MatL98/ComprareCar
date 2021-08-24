@@ -3,6 +3,7 @@ import { database } from "../../services/firebase/firebase";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import { ItemDetailStyle } from "./ItemDetailStyles";
+import Loader from "../Loader/Loader";
 
 
 
@@ -35,7 +36,7 @@ const ItemDetailContainer = () => {
     
 
     return !carItem ? (
-        <h5>cargando...</h5>
+    <Loader/>
     ) : ( 
         <ItemDetail carItem ={carItem} key={carItem.id}/>
     );

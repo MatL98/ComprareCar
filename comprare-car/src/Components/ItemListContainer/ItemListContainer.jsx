@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../../services/firebase/firebase";
+import Loader from "../Loader/Loader";
 import { Item } from "./Item";
 import {ItemListStyles} from "./ItemListContainerStyle";
 
@@ -28,7 +29,7 @@ const ItemListContainer = () => {
       {car.length ? (
         car.map((cars) => <Item car={cars} key={cars.id} />)
       ) : (
-        <h5>cargando</h5>
+          <Loader/>
       )}
 		</ItemListStyles>
   );

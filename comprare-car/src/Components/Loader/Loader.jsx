@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, {useState} from "react";
+import { css } from "@emotion/react";
+import PuffLoader from "react-spinners/PuffLoader";
 
-const LoadingComponent = () => {
-  const [loading, setLoaded] = useState[true];
+const override = css`
+  display: block;
+  border-color: gray;
+	margin: 0 auto;
+	margin-top: 5rem;
+`;
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoaded(false);
-    }, 3000);
-  }, []);
+const Loader = () => {
+  const [loading] = useState(true);
 
-  return <>{loading ? <div></div> : <div></div>}</>;
-};
+  return (
+		<PuffLoader loading={loading} css={override} size={120}/>
+  );
+}
 
-export default LoadingComponent;
+export default Loader;

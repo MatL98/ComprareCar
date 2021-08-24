@@ -9,10 +9,8 @@ export const ItemListStyles = styled.div`
 
 	@media screen and (min-width: 480px) {
   {
-    display: grid;
     grid-template-areas: "items";
-    margin: 5rem 2rem;
-  }
+  } 
 } 
   @media screen and (min-width: 768px) {
   {
@@ -24,7 +22,10 @@ export const ItemListStyles = styled.div`
     grid-template-areas: "items items items";
   }
   }
+  
+  
 }
+
 
 `;
 
