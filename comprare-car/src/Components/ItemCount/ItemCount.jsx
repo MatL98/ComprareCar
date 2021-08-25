@@ -19,7 +19,7 @@ const ItemCount = ({ stock, initital, count, setCount }) => {
         <button onClick={remove} className="minus">
         -
         </button>
-        <h3> Cantidad: {count}</h3>
+        <h3>{count}</h3>
         <button onClick={addOn} className="plus">
         +
         </button>
