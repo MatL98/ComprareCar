@@ -15,18 +15,12 @@ const ItemDetail = ({ carItem }) => {
 
   const handleState = () => setFinished(!finished);
 
-  const { carrito, addToItem, removeitem } = useContext(CartContext);
+  const {addToItem, removeitem } = useContext(CartContext);
 
   const handleSend = () => {
-    addToItem({
-      img: carItem.img,
-      name: carItem.brand,
-      model: carItem.model,
-      price: carItem.price,
-      stock: carItem.stock,
-      cantidad: count,
-      idcar: idParams,
-    });
+    const newItem = { carNew: {...carItem} , cantidad: count, 
+    idcar: idParams}
+    addToItem(newItem);
   };
   const handleRemove = () => {
     removeitem({ idParams });

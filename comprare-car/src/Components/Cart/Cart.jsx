@@ -6,7 +6,7 @@ import { ItemCart } from "./ItemCart";
 import Form from '../Form/Form'
 
 const Cart = () => {
-  const { carrito, totalCart, totalCantidad, isInCart } = useContext(CartContext);
+  const { carrito, totalCart, totalCantidad} = useContext(CartContext);
 
   return carrito.length < 1 ? (
     <CartStyle>

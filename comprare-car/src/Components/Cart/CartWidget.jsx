@@ -4,7 +4,7 @@ import CartImg from "../../img/carrito-de-compras.png";
 
 //Carrito de compra
 const CartWidget = () => {
-  const { totalCantidad, isInCart } = useContext(CartContext);
+  const { totalCantidad } = useContext(CartContext);
   const [cantidad, setCantidad] = useState(0);
 
   const getCantidad = () => {
@@ -17,7 +17,7 @@ const CartWidget = () => {
 
   return (
     <div className="cart-container">
-      {cantidad < 1 ? <></> : <p className="pCartWidget">{cantidad}</p>}
+      {cantidad < 1 ? (<></>) : (<p className="pCartWidget">{cantidad}</p>)}
       <img className="cartImg" src={CartImg} alt="Carrito" />
     </div>
   );

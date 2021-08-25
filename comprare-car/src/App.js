@@ -1,5 +1,5 @@
 import Navbar from "./components/NavBar/NavBar";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import "./App.css";

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { database } from "../../services/firebase/firebase";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import { ItemDetailStyle } from "./ItemDetailStyles";
 import Loader from "../Loader/Loader";
 
 

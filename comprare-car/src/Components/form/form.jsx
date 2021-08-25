@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import firebase from "firebase";
 import { database } from "../../services/firebase/firebase";
 import { FormStyle } from "./FormStyles";
 
-const Form = ({ cart, total, clearCart }) => {
+const Form = ({ cart, total, cleanCart }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+
+
+    let orderId;
 
     const userData = {
       name: event.target.name.value,
@@ -14,7 +16,6 @@ const Form = ({ cart, total, clearCart }) => {
       phone: event.target.phoneNumber.value,
       email: event.target.mail.value,
     };
-    console.log(userData);
 
     const newOrder = {
       buyer: userData,
@@ -24,8 +25,6 @@ const Form = ({ cart, total, clearCart }) => {
     };
 
     const orders = database.collection("orders");
-
-    let orderId;
 
     orders
       .add(newOrder)
@@ -40,17 +39,13 @@ const Form = ({ cart, total, clearCart }) => {
     const itemsToCheck = database.collection("items").where(
       firebase.firestore.FieldPath.documentId(),
       "in",
-      ['CyPZx08kL63Xfh6Qafkg']
-      //cart.map((item) => item.id)
+      cart.map((item) => item.idcar)
     );
-
-    console.log(itemsToCheck);
-
-    itemsToCheck.get().then((query) => {
-      const batch = database.batch();
-
-      const outOfStockItems = [];
-
+    
+    const batch = database.batch();
+    const outOfStockItems = [];
+    
+    itemsToCheck.get().then((query) => {  
       query.docs.forEach((doc, index) => {
         if (doc.data().stock >= newOrder.items[index].cantidad) {
           batch.update(doc.ref, {
@@ -63,7 +58,7 @@ const Form = ({ cart, total, clearCart }) => {
 
       if (outOfStockItems.length === 0) {
         batch.commit().then(() => {
-          alert("ORDEN GENERADA CON EXITO! \n ID: " + orderId);
+          console.log(orderId)
         });
       } else {
         alert("ERROR: Hay items que ya no tienen stock suficiente.");
