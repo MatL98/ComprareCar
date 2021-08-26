@@ -13,14 +13,21 @@ export const FormStyle = styled.div`
         flex-direction: column;
         height: 10rem;
         input{
+            height: 3rem;
             width: 50%;
             margin: 0.2rem 0;
         }
         button{
             width: 50%;
             border-radius: 50px;
-            background-color: darkgreen;
+            background-color: #31c704;
+            height: 2.5rem;
             color: white;
+            border: none;
+            &:hover{
+                background-color: #1d7702;
+            }   
+
         }
     }
 

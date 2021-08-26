@@ -15,15 +15,12 @@ const ItemDetail = ({ carItem }) => {
 
   const handleState = () => setFinished(!finished);
 
-  const {addToItem, removeitem } = useContext(CartContext);
+  const {addToItem } = useContext(CartContext);
 
   const handleSend = () => {
     const newItem = { carNew: {...carItem} , cantidad: count, 
     idcar: idParams}
     addToItem(newItem);
-  };
-  const handleRemove = () => {
-    removeitem({ idParams });
   };
 
   return (
@@ -66,7 +63,6 @@ const ItemDetail = ({ carItem }) => {
               <button className="btn-edit"
                 onClick={() => {
                   handleState();
-                  handleRemove();
                 }}
               >
                 Modificar compra

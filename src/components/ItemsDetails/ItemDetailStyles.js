@@ -53,6 +53,9 @@ export const ItemDetailStyle = styled.div`
     font-weight: 400;
     font-size: 1.5rem;
   }
+  h3{
+	font-size: 1.5rem;
+  }
   h5 {
     color: green;
     font-size: 1.1rem;
@@ -66,11 +69,8 @@ export const ItemDetailStyle = styled.div`
 	border-radius: 50%;
   height: 60px;
   width: 60px;
+  margin: 0 1.2rem; 
 	font-size: 2rem;
-
-	&:hover{
-		box-shadow: 0 0 6px gray;
-	}
 }
 
 
@@ -91,9 +91,12 @@ export const ItemDetailStyle = styled.div`
 	color: white;
 	border-radius: 50px;
 	font-size: 1.2rem;
+	&:hover{
+		background-color: darkgreen;
+	}
 	
 }
-.btn-agree{
+.btn-agree, .btn-edit{
 	margin-top: 0.5rem;
 	height: 50px;
 	width: 200px;
@@ -102,16 +105,14 @@ export const ItemDetailStyle = styled.div`
 	color: white;
 	border-radius: 50px;
 	font-size: 1.2rem;
+	&:hover{
+		background-color: #72be72;
+	}
+	
 }
 .btn-edit{
-	margin-top: 0.5rem;
-	height: 50px;
-	width: 200px;
 	background-color: red;
-	border: none;
-	color: white;
-	border-radius: 50px;
-	font-size: 1.2rem;
-}
+		&:hover{background-color: #c50101;}
+	}
 
 `

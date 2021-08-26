@@ -26,14 +26,25 @@ export const CartStyle = styled.div`
         background-color: black;
         border-radius: 50px;
     }
-
+    .btn-clean{
+        height: 2rem;
+        width: 100%;
+        color: white;
+        background-color: #fd6262;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 50px;
+        &: hover{
+            background-color: #db2c2c;
+        }
+    }
     .pCart{
         font-size: 1.5rem;
     }
     .spanCart{
         font-weight: 600;
         font-size: 1.8rem;
-        color: gold;
+        color: dark;
         
     }
     .cartNoItem{
@@ -43,4 +54,5 @@ export const CartStyle = styled.div`
         align-items: center;
         margin: 5rem;
     }
+    
 `

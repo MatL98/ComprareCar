@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import firebase from "firebase";
 import { database } from "../../services/firebase/firebase";
 import { FormStyle } from "./FormStyles";
+import { CartContext } from "../../services/CartContext";
 
-const Form = ({ cart, total, cleanCart }) => {
+const Form = ({ cart, total }) => {
+  const {cleanCart} = useContext(CartContext)
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -58,7 +60,8 @@ const Form = ({ cart, total, cleanCart }) => {
 
       if (outOfStockItems.length === 0) {
         batch.commit().then(() => {
-          console.log(orderId)
+          alert(orderId)
+          cleanCart();
         });
       } else {
         alert("ERROR: Hay items que ya no tienen stock suficiente.");
@@ -71,10 +74,10 @@ const Form = ({ cart, total, cleanCart }) => {
       <div onSubmit={handleSubmit}>
         <h2>Finalizá tu compra</h2>
         <form action="#">
-          <input placeholder="Nombre" type="text" id="name" />
-          <input placeholder="Apellido" type="text" id="sname" />
-          <input placeholder="Teléfono" type="tel" id="phoneNumber" />
-          <input placeholder="E-mail" type="email" id="mail" />
+          <input placeholder="Nombre" type="text" id="name" required/>
+          <input placeholder="Apellido" type="text" id="sname" required/>
+          <input placeholder="Teléfono" type="tel" id="phoneNumber" required/>
+          <input placeholder="E-mail" type="email" id="mail" required/>
           <button type="submit">COMPRAR</button>
         </form>
       </div>

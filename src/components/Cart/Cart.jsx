@@ -6,7 +6,8 @@ import { ItemCart } from "./ItemCart";
 import Form from '../Form/Form'
 
 const Cart = () => {
-  const { carrito, totalCart, totalCantidad} = useContext(CartContext);
+  const { carrito, totalCart, totalCantidad, cleanCart} = useContext(CartContext);
+
 
   return carrito.length < 1 ? (
     <CartStyle>
@@ -20,13 +21,14 @@ const Cart = () => {
   ) : (
     <CartStyle className="cartStyle">
       {carrito.map((c) => (
-        <ItemCart car={c} key={c.idcar} cantidad={c.cantidad} />
+        <ItemCart car={c.carNew} key={c.idcar} cantidad={c.cantidad} id={c.idcar}/>
       ))}
       <p className="pCart">
         Total: <span className="spanCart">${totalCart()}</span> dolares <br />
         Total de items a comprar:{" "}
         <span className="spanCart">{totalCantidad()}</span>
       </p>
+      <button className="btn-clean" onClick={cleanCart}> Vaciar carrito </button>
       <Form cart={carrito} total={totalCart()} />
     </CartStyle>
   );

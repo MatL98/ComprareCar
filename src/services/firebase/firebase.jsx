@@ -1,4 +1,6 @@
-import firebase from "firebase/app";
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/storage';
 import "firebase/firestore";
 const firebaseConfig = {
   //OBJETO DE FIREBASE

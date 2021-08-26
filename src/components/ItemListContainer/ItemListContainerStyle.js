@@ -5,7 +5,7 @@ export const ItemListStyles = styled.div`
 {
   display: grid;
   grid-gap: 0.5rem;
-  margin: 2rem 1rem;
+  margin: 3.8rem 1rem;
 
 	@media screen and (min-width: 480px) {
   {
