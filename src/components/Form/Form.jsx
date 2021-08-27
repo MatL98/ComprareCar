@@ -7,7 +7,6 @@ import { CartContext } from "../../services/CartContext";
 
 const Form = ({ cart, total }) => {
   const {cleanCart, totalCantidad, totalCart} = useContext(CartContext)
-  const [loading, setLoading] = useState([])
   const handleSubmit = (event) => {
     event.preventDefault();
     let orderId;
