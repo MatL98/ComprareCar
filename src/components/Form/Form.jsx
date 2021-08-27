@@ -41,7 +41,7 @@ const Form = ({ cart, total }) => {
     const itemsToCheck  =  database.collection("items").where(
       firebase.firestore.FieldPath.documentId(),
       "in",
-      cart.map((item) => item.idcar)
+      cart.map(item => (item.idcar))
     );
     
     
