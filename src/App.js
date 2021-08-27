@@ -17,7 +17,6 @@ function App() {
   return (
     <CartProvider>
     <BrowserRouter>
-      <div className="App">
         <Navbar/>
         <Switch>
           <Route exact path="/">
@@ -37,7 +36,6 @@ function App() {
           </Route>
         </Switch>
         <Footer/>
-      </div>
     </BrowserRouter>
   </CartProvider>
   );

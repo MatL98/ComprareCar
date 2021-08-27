@@ -5,7 +5,7 @@ import { FormStyle } from "./FormStyles";
 import { CartContext } from "../../services/CartContext";
 
 const Form = ({ cart, total }) => {
-  const {cleanCart} = useContext(CartContext)
+  const {cleanCart, totalCantidad, totalCart} = useContext(CartContext)
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -81,6 +81,13 @@ const Form = ({ cart, total }) => {
           <button type="submit">COMPRAR</button>
         </form>
       </div>
+          <div className="totalFinal">   
+          <p className="pCart">
+          Total: <span className="spanCart">${totalCart()}</span> dolares <br />
+          Total de items a comprar:{" "}
+          <span className="spanCart">{totalCantidad()}</span>
+          </p>
+          </div>
     </FormStyle>
   );
 };

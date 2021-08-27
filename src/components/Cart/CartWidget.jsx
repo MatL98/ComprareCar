@@ -1,23 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../../services/CartContext";
 import CartImg from "../../img/carrito-de-compras.png";
 
 //Carrito de compra
 const CartWidget = () => {
-  const { totalCantidad } = useContext(CartContext);
-  const [cantidad, setCantidad] = useState(0);
+  const { itemsInCart, countItems } = useContext(CartContext);
 
-  const getCantidad = () => {
-    setCantidad(totalCantidad);
-  };
-
-  useEffect(() => {
-    getCantidad();
-  }, [totalCantidad]);
 
   return (
     <div className="cart-container">
-      {cantidad < 1 ? (<></>) : (<p className="pCartWidget">{cantidad}</p>)}
+      {itemsInCart() ? (<></>) : (<p className="pCartWidget">{countItems()}</p>)}
       <img className="cartImg" src={CartImg} alt="Carrito" />
     </div>
   );

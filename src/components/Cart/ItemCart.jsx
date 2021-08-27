@@ -7,7 +7,6 @@ export const ItemCart = ({ car, cantidad, id }) => {
   const {removeItem} = useContext(CartContext);
   const removeFromCart = (event) => {
     const carID = event.target.value;
-    console.log(event)
     removeItem(carID);
     
   };
@@ -15,11 +14,10 @@ export const ItemCart = ({ car, cantidad, id }) => {
   return (
     <ItemCartStyle className="CartItems">
         <img className="itemCartImg" src={car.img} alt={car.name}/>
-        <h2>{car.name}</h2>
-        <p>{car.model}</p>
+        <h2>{car.brand} {car.model}</h2>
         <p> Cantidad: {cantidad}</p>
-        <span> $ {car.price} </span>
-        <button className="btn-remove" value={id.idcar} onClick={removeFromCart}> Eliminar </button>
+        <span> $ {car.price * cantidad} </span>
+        <button className="btn-remove" value={id} onClick={removeFromCart}> Eliminar </button>
     </ItemCartStyle>
   )
 } 

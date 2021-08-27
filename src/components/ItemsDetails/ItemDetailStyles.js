@@ -9,7 +9,7 @@ export const ItemDetailStyle = styled.div`
 	justify-content: space-around;
 	align-items: center;
 
-	&{
+	{
 		@media screen and (min-width: 480px) {
   {
 		display: flex;

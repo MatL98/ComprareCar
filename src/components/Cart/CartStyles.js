@@ -40,6 +40,7 @@ export const CartStyle = styled.div`
     }
     .pCart{
         font-size: 1.5rem;
+        margin-bottom: 2rem;
     }
     .spanCart{
         font-weight: 600;

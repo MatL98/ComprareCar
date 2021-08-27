@@ -25,13 +25,15 @@ const ItemListContainer = () => {
   };
 
   return (
-		<ItemListStyles>
+		<>
       {car.length ? (
-        car.map((cars) => <Item car={cars} key={cars.id} />)
-      ) : (
+        <ItemListStyles>
+        {car.map((cars) => <Item car={cars} key={cars.id} />)}
+        </ItemListStyles>
+      ) : ( 
           <Loader/>
       )}
-		</ItemListStyles>
+		</>
   );
 };
 

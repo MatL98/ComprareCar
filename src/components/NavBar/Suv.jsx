@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import Loader from "../Loader/Loader";
 import { database } from "../../services/firebase/firebase";
 import { Item } from "../ItemListContainer/Item";
+import { ItemListStyles } from "../ItemListContainer/ItemListContainerStyle";
 
 export const Suv = () => {
   let categoria = "suv";
@@ -16,11 +18,13 @@ export const Suv = () => {
     )
   );
 
-  return (
-    <div className="grid-container">
+  return car.length ? (
+    <ItemListStyles>
       {car.map((c) => (
         <Item car={c} key={c.id} />
       ))}
-    </div>
-  );
+    </ItemListStyles>
+  ):(
+    <Loader/>
+  )
 };

@@ -8,17 +8,16 @@ export const CartProvider = ({ children }) => {
 
   const updateCart = (carrito) => {
     const itemsSort = carrito.sort((a, b) =>
-      a.carid > b.carid ? 1 : -1
+      a.idcar > b.idcar ? 1 : -1
     );
     setCarrito(itemsSort);
-    //sessionStorage.setItem("carrito", JSON.stringify(itemsSort));
   };
 
   const addToItem = (newItem) => {
     if (isInCart(newItem.idcar)) {
       itemUpdate(newItem);
     }else {  
-      setCarrito([...carrito, newItem]);
+      updateCart([...carrito, newItem]);
     }
   };
 
@@ -27,23 +26,25 @@ export const CartProvider = ({ children }) => {
     setCarrito(itemException);
   };
   
-  const isInCart = (newItem) =>
-    carrito.filter((itm) => itm.idcar === newItem.idcar);
+  const isInCart = (idCar) =>
+    carrito.some((itm) => itm.idcar === idCar);
 
   const itemUpdate = (newItem) =>{
     const carritoCopy = carrito.slice();
-    const position = carritoCopy.findIndex(
-      (item) => item.idcar === item.idcar
-    );
-    if (carritoCopy[position] !== newItem.cantidad) {
-      carritoCopy.splice(position, 1, newItem);
-      setCarrito(carritoCopy);
+    const i = carritoCopy.findIndex(
+      (item) => item.idcar === newItem.idcar);
+    if (console.log(carritoCopy[i].cantidad) !== console.log(newItem.cantidad)) {
+      carritoCopy.splice(i, 1, newItem);
+      updateCart(carritoCopy);
     }
   }
 
   const cleanCart = () =>{
     setCarrito([]);
   }
+
+  const itemsInCart = () => carrito.length < 1;
+  const countItems = () => carrito.length;
 
   const totalCart = () => {
     return carrito.reduce(
@@ -65,6 +66,8 @@ export const CartProvider = ({ children }) => {
         totalCart,
         isInCart,
         cleanCart,
+        itemsInCart,
+        countItems
       }}
     >
       {children}
