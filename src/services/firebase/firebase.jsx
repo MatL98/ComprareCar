@@ -1,5 +1,9 @@
 import firebase from 'firebase/app';
+import 'firebase/app';
 import "firebase/firestore";
+import 'firebase/database';
+import 'firebase/storage'
+
 const firebaseConfig = {
   //OBJETO DE FIREBASE
     apiKey: "AIzaSyCU45zp8r2L0RhDqhgcLSRDUUOyI-yQMEs",
@@ -10,6 +14,7 @@ const firebaseConfig = {
     appId: "1:473628502660:web:7d2cbe47643bb9d1f1b0d1"
 };
 const app = firebase.initializeApp(firebaseConfig);
+
 export function getFirebase(){
   return app;
 }
