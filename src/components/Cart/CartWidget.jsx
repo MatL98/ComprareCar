@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../services/CartContext";
 import CartImg from "../../img/carrito-de-compras.png";
+import { CartWidgetStyle } from "./CartWidgetStyles";
 
 //Carrito de compra
 const CartWidget = () => {
@@ -8,10 +9,10 @@ const CartWidget = () => {
 
 
   return (
-    <div className="cart-container">
-      {itemsInCart() ? (<></>) : (<p className="pCartWidget">{countItems()}</p>)}
+    <CartWidgetStyle className="cartWidget">
       <img className="cartImg" src={CartImg} alt="Carrito" />
-    </div>
+      {itemsInCart() ? (<></>) : (<p className="pCartWidget">{countItems()}</p>)}
+    </CartWidgetStyle>
   );
 };
 
