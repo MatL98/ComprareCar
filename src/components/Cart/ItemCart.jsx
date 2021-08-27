@@ -13,11 +13,11 @@ export const ItemCart = ({ car, cantidad, id }) => {
   
   return (
     <ItemCartStyle className="CartItems">
-        <img className="itemCartImg" src={car.img} alt={car.name}/>
-        <h2>{car.brand} {car.model}</h2>
-        <p> Cantidad: {cantidad}</p>
-        <span> $ {car.price * cantidad} </span>
-        <button className="btn-remove" value={id} onClick={removeFromCart}> Eliminar </button>
+      <img className="itemCartImg" src={car.img} alt={car.name}/>
+      <h2>{car.brand} {car.model}</h2>
+      <p> Cantidad: {cantidad}</p>
+      <span> $ {car.price * cantidad} </span>
+      <button className="btn-remove" value={id} onClick={removeFromCart}> Eliminar </button>
     </ItemCartStyle>
   )
 } 

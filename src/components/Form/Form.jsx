@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import firebase from "firebase";
 import { database } from "../../services/firebase/firebase";
 import { FormStyle } from "./FormStyles";
@@ -7,7 +7,9 @@ import { CartContext } from "../../services/CartContext";
 
 const Form = ({ cart, total }) => {
   const {cleanCart, totalCantidad, totalCart} = useContext(CartContext)
+  const [itemsCart, setItemsCart] = useState()
   const handleSubmit = (event) => {
+
     event.preventDefault();
     let orderId;
 
@@ -25,6 +27,7 @@ const Form = ({ cart, total }) => {
       total: total,
     };
     
+    setItemsCart(newOrder);
 
 
     const orders = database.collection("orders");
@@ -49,7 +52,7 @@ const Form = ({ cart, total }) => {
       query.docs.forEach((doc, index) => {
         if (doc.data().items.stock >= newOrder.items[index].cantidad) {
           batch.update(doc.ref, {
-            stock: doc.data().carNew.stock - newOrder.items[index].cantidad,
+            stock: doc.data().stock - newOrder.items[index].cantidad,
           });
         } else {
           outOfStockItems.push({ ...doc.data(), id: doc.id });

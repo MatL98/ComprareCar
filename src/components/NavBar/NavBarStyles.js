@@ -13,11 +13,12 @@ export const NavBarStyle = styled.nav`
   }
   .title {
     display: flex;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-family: "Poppins", sans-serif;
     padding-bottom: 5px;
     color: rgb(255, 255, 255);
     text-shadow: 0px 0px 5px black;
+    margin-left: 0.2rem;
   }
 
   .navBarUl {
@@ -36,7 +37,7 @@ export const NavBarStyle = styled.nav`
   a {
     text-decoration: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-family: "Poppins", sans-serif;
   }
   .cart-container {
@@ -51,5 +52,20 @@ export const NavBarStyle = styled.nav`
   .cartImg {
     height: 60px;
     width: 60px;
+  }
+
+  } 
+  @media screen and (min-width: 768px) {
+  .title{
+    font-size: 2.3rem;
+  }
+  a{
+    font-size: 1.5rem;
+  }
+  }
+  @media screen and (min-width: 1024px) {
+  {
+    
+  }
   }
 `;

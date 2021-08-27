@@ -30,14 +30,13 @@ export const ItemDetailStyle = styled.div`
   }
 }
 
-
 .itemDetail{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin: 0.2rem  0.3rem 5rem 0.3rem;
 }
-
 
 .itemImg {
     height: 70%;
@@ -47,6 +46,7 @@ export const ItemDetailStyle = styled.div`
   h2 {
     font-family: "Poppins", sans-serif;
     font-size: 2.4rem;
+		text-align: center;
   }
   p {
     font-family: "Poppins", sans-serif;
@@ -72,7 +72,6 @@ export const ItemDetailStyle = styled.div`
   margin: 0 1.2rem; 
 	font-size: 2rem;
 }
-
 
 .counter {
   display: flex;

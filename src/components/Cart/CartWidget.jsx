@@ -3,7 +3,6 @@ import { CartContext } from "../../services/CartContext";
 import CartImg from "../../img/carrito-de-compras.png";
 import { CartWidgetStyle } from "./CartWidgetStyles";
 
-//Carrito de compra
 const CartWidget = () => {
   const { itemsInCart, countItems } = useContext(CartContext);
 
