@@ -14,7 +14,7 @@
 
 <h1>How to install the project</h1>
 <ol>
-  <li>You must clone the repo using </li>
+  <li>You must clone this repo using <strong>https://github.com/MatL98/ComprareCar</strong></li>
   <li>Then you will have to install all the dependencies of the project, for that you will have to execute <strong>npm install</strong></li>
   <li>Finally, you can run the project and test using <strong> npm start </strong></li>
  </ol>
