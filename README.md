@@ -1,6 +1,6 @@
 <h1>ComprareCar</h1>
 
-<a href="https://media.giphy.com/media/P1U9B9K28I1rKrtj1Y/giphy.gif?cid=790b7611285ad84c97387683cfe7f7da1dd42add62537620&rid=giphy.gif&ct=g"></a>
+<img src="https://media.giphy.com/media/P1U9B9K28I1rKrtj1Y/giphy.gif?cid=790b7611285ad84c97387683cfe7f7da1dd42add62537620&rid=giphy.gif&ct=g" title="gif"></img>
 <h3> ComprareCar is a project E-commerce developed with React.js</h3>
 <p>In this project I wanted to simulate a car E-commerce, in which the different functions can be observed. Being able to access the cars, divide into categories, enter the details and then the shopping cart.</p>
 
