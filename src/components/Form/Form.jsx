@@ -7,9 +7,8 @@ import { CartContext } from "../../services/CartContext";
 
 const Form = ({ cart, total }) => {
   const {cleanCart, totalCantidad, totalCart} = useContext(CartContext)
-  const [itemsCart, setItemsCart] = useState()
+  const [loading, setLoading] = useState()
   const handleSubmit = (event) => {
-
     event.preventDefault();
     let orderId;
 
@@ -27,7 +26,6 @@ const Form = ({ cart, total }) => {
       total: total,
     };
     
-    setItemsCart(newOrder);
 
 
     const orders = database.collection("orders");
@@ -35,32 +33,35 @@ const Form = ({ cart, total }) => {
       .add(newOrder)
       .then((res) => {
         orderId = res.id;
-        console.log(orderId);
       })
       .catch((error) => {
         console.log("ERROR: " + error);
       });
 
-    const itemsToCheck = database.collection("items").where(
+    const itemsToCheck  =  database.collection("items").where(
       firebase.firestore.FieldPath.documentId(),
       "in",
-      (cart.map((item) => item.idcar)), 
+      cart.map((item) => item.idcar)
     );
+    
+    
     itemsToCheck.get().then((query) => {
       const batch = database.batch();
-      const outOfStockItems = [];  
+      const outStockItems = [];  
       query.docs.forEach((doc, index) => {
-        if (doc.data().items.stock >= newOrder.items[index].cantidad) {
+        if (doc.data().stock >= newOrder.items[index].cantidad) {
           batch.update(doc.ref, {
             stock: doc.data().stock - newOrder.items[index].cantidad,
           });
         } else {
-          outOfStockItems.push({ ...doc.data(), id: doc.id });
+          outStockItems.push({ ...doc.data().items, id: doc.id });
         }
-      }); 
+      });
 
-      if (outOfStockItems.length === 0) {
-        batch.commit().then(() => {
+
+    if (outStockItems.length === 0) {
+      batch.commit().then(() => {
+          console.log(orderId)
           alert(`Tu compra fue realizada, tu orden es ${orderId}`)
           cleanCart()
         });
