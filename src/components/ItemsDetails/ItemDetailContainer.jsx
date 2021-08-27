@@ -16,8 +16,6 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         setLoading(true);
         setCarsItem();
-        
-        
             database.collection("cars").doc(idParams).get()
             .then((querySnapshot) => {
                 if(querySnapshot.size === 0){
@@ -29,9 +27,10 @@ const ItemDetailContainer = () => {
                 console.log(error);
             })
             .finally(()=>{
-                setLoading(false)
+                setLoading(true)
             })
-        }, [idParams]);
+            
+        }, [idParams, loading]);
     
 
     return !carItem ? (

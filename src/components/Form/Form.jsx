@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import firebase from "firebase";
 import { database } from "../../services/firebase/firebase";
 import { FormStyle } from "./FormStyles";
 import { CartContext } from "../../services/CartContext";
+
 
 const Form = ({ cart, total }) => {
   const {cleanCart, totalCantidad, totalCart} = useContext(CartContext)
@@ -57,7 +58,8 @@ const Form = ({ cart, total }) => {
 
       if (outOfStockItems.length === 0) {
         batch.commit().then(() => {
-          console.log(orderId)
+          alert(`Tu compra fue realizada, tu orden es ${orderId}`)
+          cleanCart()
         });
       } else {
         alert("ERROR: Hay items que ya no tienen stock suficiente.");
@@ -67,9 +69,9 @@ const Form = ({ cart, total }) => {
 
   return (
     <FormStyle className="formStyle">
-      <div onSubmit={handleSubmit}>
+      <div>
         <h2>Finalizá tu compra</h2>
-        <form >
+        <form onSubmit={handleSubmit}>
           <input placeholder="Nombre" type="text" id="name" required/>
           <input placeholder="Apellido" type="text" id="sname" required/>
           <input placeholder="Teléfono" type="tel" id="phoneNumber" required/>
