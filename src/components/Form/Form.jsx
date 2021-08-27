@@ -7,7 +7,7 @@ import { CartContext } from "../../services/CartContext";
 
 const Form = ({ cart, total }) => {
   const {cleanCart, totalCantidad, totalCart} = useContext(CartContext)
-  const [loading, setLoading] = useState()
+  const [loading, setLoading] = useState([])
   const handleSubmit = (event) => {
     event.preventDefault();
     let orderId;
@@ -41,7 +41,7 @@ const Form = ({ cart, total }) => {
     const itemsToCheck  =  database.collection("items").where(
       firebase.firestore.FieldPath.documentId(),
       "in",
-      cart.map(item => (item.idcar))
+      cart.map(item => item.idcar)
     );
     
     
@@ -61,7 +61,6 @@ const Form = ({ cart, total }) => {
 
     if (outStockItems.length === 0) {
       batch.commit().then(() => {
-          console.log(orderId)
           alert(`Tu compra fue realizada, tu orden es ${orderId}`)
           cleanCart()
         });
@@ -83,13 +82,13 @@ const Form = ({ cart, total }) => {
           <button type="submit">COMPRAR</button>
         </form>
       </div>
-          <div className="totalFinal">   
-          <p className="pCart">
+      <div className="totalFinal">   
+        <p className="pCart">
           Total: <span className="spanCart">${totalCart()}</span> dolares <br />
           Total de items a comprar:{" "}
           <span className="spanCart">{totalCantidad()}</span>
-          </p>
-          </div>
+        </p>
+      </div>
     </FormStyle>
   );
   }
