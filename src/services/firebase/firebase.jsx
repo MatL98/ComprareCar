@@ -1,5 +1,4 @@
 import firebase from 'firebase/app';
-import 'firebase/app';
 import "firebase/firestore";
 import 'firebase/database';
 import 'firebase/storage'
@@ -19,4 +18,4 @@ export function getFirebase(){
   return app;
 }
 
-export const database = firebase.firestore();
+export const database = app.firestore();
