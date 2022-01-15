@@ -6,8 +6,7 @@ import { CartContext } from "../../services/CartContext";
 
 const Form = ({ cart, total }) => {
   const { cleanCart, totalCantidad, totalCart } = useContext(CartContext);
-  const [orderId, setOrderId] = useState()
-  const [idCar, setIdCar] = useState()
+  const [order, setOrder] = useState();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -28,29 +27,45 @@ const Form = ({ cart, total }) => {
     const addOrder = async (order) => {
       try {
         const orders = await database.collection("orders").add(order);
-        setOrderId(orders.id)
-        return orders
+        if (orders) {
+          setOrder(orders.id);
+        }
       } catch (error) {
         console.log(error);
       }
     };
-    addOrder(newOrder);
-
-    /* const itemsToCheck  =  database.collection("items").where(
-      firebase.firestore.FieldPath.documentId(),
-      "in",
-      cart.map(item => item.idcar)
-    ); */
-
-    setIdCar(cart[0].idcar);
-    console.log(idCar);
-
-    const cars = database.collection("cars");
-
-    cars.doc(idCar)
-    .update({
-      stock: 3
-    })
+    
+    const updateStock = async () => {
+      let idCar = cart[0].idcar;
+      let cantidad = cart[0].cantidad;
+      let stock = cart[0].carNew.stock;
+      try {
+        const cars = await database
+        .collection("cars")
+        .doc(idCar)
+        .update({
+          stock: stock - cantidad,
+        });
+        return cars;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+    const finishBuy = async () => {
+      await addOrder(newOrder);
+      let stock = cart[0].carNew.stock;
+      let cantidad = cart[0].cantidad;
+      if (stock > cantidad) {
+        await updateStock();
+        console.log(`Tu compra se ha realizado su orden es ${order}`);
+        //  cleanCart();
+      } else {
+        console.log("no hay suficiente stock");
+      }
+    };
+    await finishBuy()
+    
 
     /* itemsToCheck.get((query) => {
       const batch = database.batch();
