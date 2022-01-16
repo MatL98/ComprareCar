@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { database } from "../../services/firebase/firebase";
-import firebase from "firebase/app";
 import { FormStyle } from "./FormStyles";
 import { CartContext } from "../../services/CartContext";
 
 const Form = ({ cart, total }) => {
   const { cleanCart, totalCantidad, totalCart } = useContext(CartContext);
-  const [order, setOrder] = useState();
+  const [orderId, setOrderId] = useState();
+  const order = [];
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -24,48 +24,68 @@ const Form = ({ cart, total }) => {
       total: total,
     };
 
+    const getOrders = async () => {
+      try {
+        const getOrder = await database.collection("orders").get();
+        getOrder.forEach((doc) => {
+          order.push({ ...doc.data().items, id: doc.id });
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     const addOrder = async (order) => {
       try {
         const orders = await database.collection("orders").add(order);
+        console.log(orders);
         if (orders) {
-          setOrder(orders.id);
+          setOrderId(orders.id);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      await getOrders();
+    };
+    await addOrder();
+
+    const updateStock = async () => {
+      try {
+        for (let i = 0; i < cart.length;i++) {
+          let idCar = cart[i].idcar;
+          let cantidad = cart[i].cantidad;
+          let stock = cart[i].carNew.stock;
+
+          console.log(idCar, cantidad, stock);
+          const cars = await database
+            .collection("cars")
+            .doc(idCar)
+            .update({
+              stock: stock - cantidad,
+            });
         }
       } catch (error) {
         console.log(error);
       }
     };
-    
-    const updateStock = async () => {
-      let idCar = cart[0].idcar;
-      let cantidad = cart[0].cantidad;
-      let stock = cart[0].carNew.stock;
-      try {
-        const cars = await database
-        .collection("cars")
-        .doc(idCar)
-        .update({
-          stock: stock - cantidad,
-        });
-        return cars;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    
+
     const finishBuy = async () => {
       await addOrder(newOrder);
       let stock = cart[0].carNew.stock;
       let cantidad = cart[0].cantidad;
-      if (stock > cantidad) {
+      const itemsToBuy = [];
+
+      await updateStock();
+
+      /* if (stock > cantidad) {
         await updateStock();
-        console.log(`Tu compra se ha realizado su orden es ${order}`);
+        console.log(`Tu compra se ha realizado su orden es ${orderId}`);
         //  cleanCart();
       } else {
         console.log("no hay suficiente stock");
-      }
+      } */
     };
-    await finishBuy()
-    
+    await finishBuy();
 
     /* itemsToCheck.get((query) => {
       const batch = database.batch();
